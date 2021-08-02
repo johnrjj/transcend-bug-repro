@@ -1,5 +1,23 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+
+
+## Bug reproduction
+
+This repo captures a bug between Transcend and Slate (v0.58.4), which specifically seems to be an incompatability between Transcend and immer bootstrapping itself. (Immer is a popular library for working with data immutably)
+
+```
+yarn
+yarn dev
+> navigate to localhost:3000
+> see app crash due to TypeError: Cannot assign to read only property 'Symbol(Symbol.iterator)' of object '#<DraftMap>'
+
+> comment out transcend script in pages/_document.tsx
+> reload page, it works just fine
+
+(johnrjj): seems like immer is trying to use Map to extend/create its own 'DraftMap', but Transcend is messing with DOM write permissions here?
+```
+
 ## Getting Started
 
 First, run the development server:
