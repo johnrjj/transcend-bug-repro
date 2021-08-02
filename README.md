@@ -6,7 +6,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 This repo captures a bug between Transcend and Slate (v0.58.4), which specifically seems to be an incompatability between Transcend and immer bootstrapping itself. (Immer is a popular library for working with data immutably)
 
-```
+```bash
 yarn
 yarn dev
 > navigate to localhost:3000
